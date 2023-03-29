@@ -14,6 +14,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class GridCell {
+
+    private boolean isUsed = false;
+
+    private int lengthFromA = 0;
     private double innerCellSize;
     private boolean isBarrier;
     private boolean isA;
@@ -46,7 +50,7 @@ public class GridCell {
                     grid.add(lbIndex,l,k);
                 }
                 if(k == 1 && l == 1){
-                    lb = new Label(i+"."+j);
+                    lb = new Label("");
                     lb.setStyle("-fx-font-size: 12 ;");
                     GridPane.setHalignment(lb,HPos.CENTER);
                     grid.add(lb,1,1);
@@ -63,6 +67,15 @@ public class GridCell {
         createGrid(innerCellSize);
 
     }
+
+    public int getLengthFromA() {
+        return lengthFromA;
+    }
+
+    public void setLengthFromA(int lengthFromA) {
+        this.lengthFromA = lengthFromA;
+    }
+
     public void setDirection(Direction dir)  {
         ImageView iv = null;
         try {
@@ -90,6 +103,15 @@ public class GridCell {
                 grid.add(iv,1,2);
             }
         }
+    }
+
+
+    public boolean isUsed() {
+        return isUsed;
+    }
+
+    public void setUsed(boolean used) {
+        isUsed = used;
     }
 
     public boolean isBarrier() {
